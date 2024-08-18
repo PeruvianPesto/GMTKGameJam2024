@@ -3,38 +3,30 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
-public class PlayerMovement : MonoBehaviour
+public class BigCharacterMovement : MonoBehaviour
 {
     private float horizontal;
-    [SerializeField] private float speed = 6f;
-    [SerializeField] private float jumpPower = 14f;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float jumpPower = 7f;
     private bool isFacingRight = true;
-    [SerializeField] private float circleRadius = 0.2f;
+    [SerializeField] private float circleRadius = 0.3f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+
 
     public Transform attackPoint;
     public float attackRange;
     public LayerMask enemyLayers;
     public int attackDamage = 1;
 
-    public Animator animator;
 
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        // Walking animation
-        if (horizontal != 0f)
-        {
-            animator.SetBool("AnimBool_isWalking", true);
-        }
-        else
-        {
-            animator.SetBool("AnimBool_isWalking", false);
-        }
+        // Jump
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
