@@ -36,10 +36,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sizeChangeTimer = 10f;
     private float timer = 0f;
 
+    public Animator animator; 
 
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        // Walking animation
+        if (horizontal != 0f){
+            animator.SetBool("AnimBool_isWalking", true); 
+        }
+        else{
+            animator.SetBool("AnimBool_isWalking", false); 
+        }
+
+        // Jump
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
