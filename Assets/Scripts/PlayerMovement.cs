@@ -43,12 +43,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Jump
-
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower);
+        }
+        /*
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower);
         }
-
+        */
         if (Input.GetButtonUp("Jump") && rb.linearVelocityY > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.05f);
