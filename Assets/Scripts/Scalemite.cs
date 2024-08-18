@@ -6,8 +6,6 @@ public class Scalemite : MonoBehaviour
     public Rigidbody2D rb;
     private bool isFacingRight = true;
 
-    bool grounded;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,7 +44,6 @@ public class Scalemite : MonoBehaviour
         {
             Flip();
             speed = speed * (-1);
-            grounded = false;
         }
     }
 }
