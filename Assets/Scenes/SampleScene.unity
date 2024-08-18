@@ -648,16 +648,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1233439578579473423, guid: c9f69d8f274cebf4eb90716a5e99ea46, type: 3}
+      propertyPath: m_GravityScale
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233439578579473423, guid: c9f69d8f274cebf4eb90716a5e99ea46, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1607351997827195505, guid: c9f69d8f274cebf4eb90716a5e99ea46, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.07
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 1607351997827195505, guid: c9f69d8f274cebf4eb90716a5e99ea46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.56
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 1607351997827195505, guid: c9f69d8f274cebf4eb90716a5e99ea46, type: 3}
       propertyPath: m_LocalPosition.z
