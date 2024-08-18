@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Scalemite : MonoBehaviour
 {
-    public int miteHealth = 2;
     public int speed = 20;
     public Rigidbody2D rb;
     private bool isFacingRight = true;
@@ -34,11 +33,6 @@ public class Scalemite : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            grounded = true;
-        }
-
         if (other.gameObject.CompareTag("Wall"))
         {
             Flip();

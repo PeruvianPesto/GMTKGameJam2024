@@ -14,6 +14,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    public Transform attackPoint;
+    public float attackRange;
+    public LayerMask enemyLayers;
+    public int attackDamage = 1;
+
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -28,7 +33,30 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.05f);
         }
 
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Attack();
+        }
+
         Flip();
+    }
+
+    private void Attack()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyDamage>().TakeDamage(attackDamage);
+        }
+    }
+    
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     private void FixedUpdate()
