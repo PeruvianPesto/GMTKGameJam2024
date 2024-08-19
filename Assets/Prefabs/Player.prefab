@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1416615804776673496}
   - component: {fileID: 2101792234141388256}
   - component: {fileID: 7382890007954725758}
+  - component: {fileID: 5011506997659175608}
   m_Layer: 0
   m_Name: Heart (1)
   m_TagString: Untagged
@@ -53,7 +54,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788262998475312505}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
@@ -128,6 +129,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5011506997659175608
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788262998475312505}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4cec528ea3120e64698b1e64abe7e1b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1828930730378909071
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +715,7 @@ MonoBehaviour:
   - {fileID: 1788262998475312505}
   blink: {fileID: 6079530265096772740}
   animator: {fileID: 2459084435596541249}
+  hpAnimator: {fileID: 5011506997659175608}
 --- !u!50 &6495486740416061540
 Rigidbody2D:
   serializedVersion: 5

@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject blink;
 
     public Animator animator;
+    public Animator hpAnimator;
 
     private void Start()
     {
@@ -156,8 +157,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isPlayerInvulnerable) return;
 
-        playerHealth -= damage;
-        Destroy(hearts[playerHealth].gameObject);
+        if (playerHealth > 0)
+        {
+            playerHealth -= damage;
+            hpAnimator.SetTrigger("TakeDamage");
+            //Destroy(hearts[playerHealth].gameObject);
+        }
 
         if (playerHealth <= 0)
         {

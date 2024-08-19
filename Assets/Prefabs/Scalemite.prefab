@@ -144,7 +144,7 @@ MonoBehaviour:
     m_Bits: 64
   groundCheck: {fileID: 5452170940982259574}
   groundCheckDistance: 0.1
-  edgeCheck: {fileID: 0}
+  edgeCheck: {fileID: 7968808304609572178}
   rb: {fileID: 1233439578579473423}
 --- !u!114 &3578782645507654830
 MonoBehaviour:
