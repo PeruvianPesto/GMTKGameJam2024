@@ -26,21 +26,28 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float invulnerabilityTime = 1f;
     private bool isPlayerInvulnerable = false;
 
-    public Animator animator;
+    public Animator animator; 
 
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        // Walking animation
-        if (horizontal != 0f)
-        {
-            animator.SetBool("AnimBool_isWalking", true);
-        }
+        // --------Animation-related-------- 
+        if (horizontal != 0f) { 
+            animator.SetBool("AnimBool_isWalking", true); 
+        } 
         else
         {
             animator.SetBool("AnimBool_isWalking", false);
         }
+        if (IsGrounded() == true){
+            animator.SetBool("AnimBool_isGrounded", true);
+        }
+        else{
+            animator.SetBool("AnimBool_isGrounded", false);
+        }
+        animator.SetFloat("AnimFloat_YVelocity", rb.linearVelocityY); 
+        // --------End--------
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -53,9 +60,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Time.time > nextAttackTime)
-        {
+        { 
             if (Input.GetMouseButtonDown(0))
             {
+                if (IsGrounded() == true){
+                animator.SetTrigger("AnimTrig_AttackGrounded"); 
+                }
+                else{
+                    animator.SetTrigger("AnimTrig_AttackAirborn"); 
+                }
                 Attack();
                 nextAttackTime = Time.time + 1 / attackRate;
             }
