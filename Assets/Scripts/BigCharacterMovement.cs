@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Unity.VisualScripting;
 
 public class BigCharacterMovement : MonoBehaviour
 {
@@ -15,12 +16,16 @@ public class BigCharacterMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] private LayerMask enemyLayers;
+    [SerializeField] private int attackDamage = 2;
+    [SerializeField] private float attackRate = 3f;
+    private float nextAttackTime = 0f;
 
-    public Transform attackPoint;
-    public float attackRange;
-    public LayerMask enemyLayers;
-    public int attackDamage = 1;
-
+    [SerializeField] private int playerHealth = 3;
+    [SerializeField] private float invulnerabilityTime = 1f;
+    private bool isPlayerInvulnerable = false;
 
     private void Update()
     {
@@ -38,31 +43,18 @@ public class BigCharacterMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.05f);
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Time.time > nextAttackTime)
         {
-            Attack();
+            if (Input.GetMouseButtonDown(0))
+            {
+                Attack();
+                nextAttackTime = Time.time + 1 / attackRate;
+            }
         }
 
         Flip();
     }
 
-    private void Attack()
-    {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<EnemyDamage>().TakeDamage(attackDamage);
-        }
-    }
-
-
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
 
     private void FixedUpdate()
     {
@@ -83,5 +75,60 @@ public class BigCharacterMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, circleRadius, groundLayer);
+    }
+
+    private void Attack()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (attackPoint == null) return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Enemy") && !isPlayerInvulnerable)
+        {
+            // Example damage value; adjust as needed
+            TakeDamage(1);
+        }
+    }
+
+    private void TakeDamage(int damage)
+    {
+        if (isPlayerInvulnerable) return;
+
+        playerHealth -= damage;
+
+        if (playerHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            StartCoroutine(PlayerInvulnerabilityCoroutine());
+        }
+    }
+
+    private IEnumerator PlayerInvulnerabilityCoroutine()
+    {
+        isPlayerInvulnerable = true;
+        yield return new WaitForSeconds(invulnerabilityTime);
+        isPlayerInvulnerable = false;
+    }
+
+    private void Die()
+    {
+        Debug.Log("Player died");
+        this.enabled = false;
     }
 }
