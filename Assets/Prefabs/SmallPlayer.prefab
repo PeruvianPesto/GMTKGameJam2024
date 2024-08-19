@@ -170,6 +170,8 @@ MonoBehaviour:
   attackRate: 2
   playerHealth: 1
   invulnerabilityTime: 1
+  hearts:
+  - {fileID: 6114659407347245922}
 --- !u!212 &6143339372369823369
 SpriteRenderer:
   m_ObjectHideFlags: 0
