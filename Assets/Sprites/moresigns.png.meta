@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: b22b9b19a6539d14f957fd7532e0312e
+guid: ce27ff3d990fb9b4ea8d3acc5577604b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4320295261928297051
-    second: logo_0
+      213: -572215463378459941
+    second: moresigns_0
+  - first:
+      213: 7051670235500041701
+    second: moresigns_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,8 +75,8 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
-    resizeAlgorithm: 1
+    maxTextureSize: 64
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -122,30 +125,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: logo_0
+      name: moresigns_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 6
-        width: 202
-        height: 106
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +144,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ade5f3695a3b04c0800000000000000
-      internalID: -4320295261928297051
+      spriteID: bd2675a51151f08f0800000000000000
+      internalID: -572215463378459941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moresigns_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e5dc24c7b09cd160800000000000000
+      internalID: 7051670235500041701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moresigns_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebf25604d0fe79f48b4250e5dcebe3cf
+      internalID: 976642022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moresigns_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab6ff7e269a428948bd1842b1c39221a
+      internalID: 1762562045
       vertices: []
       indices: 
       edges: []
@@ -164,7 +220,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 248dc9f8a13131441ae32d73e649439b
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +230,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      logo_0: -4320295261928297051
+      moresigns_0: -572215463378459941
+      moresigns_1: 7051670235500041701
+      moresigns_2: 976642022
+      moresigns_3: 1762562045
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
