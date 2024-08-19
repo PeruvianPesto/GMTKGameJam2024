@@ -18,23 +18,30 @@ public class PlayerMovement : MonoBehaviour
     public Transform attackPoint;
     public float attackRange;
     public LayerMask enemyLayers;
-    public int attackDamage = 1;
+    public int attackDamage = 1; 
 
-    public Animator animator;
+    public Animator animator; 
 
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        // Walking animation
-        if (horizontal != 0f)
-        {
-            animator.SetBool("AnimBool_isWalking", true);
-        }
+        // --------Animation-related-------- 
+        if (horizontal != 0f) { 
+            animator.SetBool("AnimBool_isWalking", true); 
+        } 
         else
         {
             animator.SetBool("AnimBool_isWalking", false);
         }
+        if (IsGrounded() == true){
+            animator.SetBool("AnimBool_isGrounded", true);
+        }
+        else{
+            animator.SetBool("AnimBool_isGrounded", false);
+        }
+        animator.SetFloat("AnimFloat_YVelocity", rb.linearVelocityY); 
+        // --------End--------
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -48,6 +55,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
         {
+            if (IsGrounded() == true){
+                animator.SetTrigger("AnimTrig_AttackGrounded"); 
+            }
+            else{
+                animator.SetTrigger("AnimTrig_AttackAirborn"); 
+            }
             Attack();
         }
 
@@ -57,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
     private void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyDamage>().TakeDamage(attackDamage);
