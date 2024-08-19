@@ -8,9 +8,16 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] public Transform target;
 
+    public float leftEdgeX;
+    public float rightEdgeX; 
+
     private void Update()
     {
         Vector3 targetPosition = target.position + offset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        Debug.Log("Target position x: " + target.position.x); 
+        if (target.position.x > leftEdgeX && target.position.x < rightEdgeX){
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        }
+    
     }
 }
