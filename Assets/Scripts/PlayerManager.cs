@@ -9,9 +9,6 @@ public class PlayerManager : MonoBehaviour
     public CameraFollow cameraFollow; // Reference to the CameraFollow script
 
     private GameObject currentPlayer;
-    private bool isSizeLocked = false;
-    [SerializeField] private float sizeChangeTimer = 10f;
-    [SerializeField] private float smallPlayerOffsetY = 0.5f; // Vertical offset for small player
 
     private void Start()
     {
@@ -25,25 +22,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void ChangeSize(GameObject newPlayer, float verticalOffset)
     {
-        if (!isSizeLocked)
-        {
-            if (Input.GetMouseButtonDown(0)) // Left click for small
-            {
-                StartCoroutine(ChangeSize(smallPlayer, smallPlayerOffsetY));
-            }
-            else if (Input.GetMouseButtonDown(1)) // Right click for large
-            {
-                StartCoroutine(ChangeSize(largePlayer, 0f)); // No offset for large player
-            }
-        }
-    }
-
-    private IEnumerator ChangeSize(GameObject newPlayer, float verticalOffset)
-    {
-        isSizeLocked = true;
-
         // Switch to the new player object
         newPlayer.transform.position = currentPlayer.transform.position + new Vector3(0, verticalOffset, 0);
         currentPlayer.SetActive(false);
@@ -55,25 +35,5 @@ public class PlayerManager : MonoBehaviour
         {
             cameraFollow.target = currentPlayer.transform;
         }
-
-        // Wait for the duration of size change
-        yield return new WaitForSeconds(sizeChangeTimer);
-
-        // Revert back to normal size
-        if (currentPlayer != normalPlayer)
-        {
-            currentPlayer.SetActive(false);
-            normalPlayer.transform.position = currentPlayer.transform.position;
-            normalPlayer.SetActive(true);
-            currentPlayer = normalPlayer;
-
-            // Update the camera's target
-            if (cameraFollow != null)
-            {
-                cameraFollow.target = normalPlayer.transform;
-            }
-        }
-
-        isSizeLocked = false;
     }
 }
