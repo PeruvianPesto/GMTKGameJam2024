@@ -28,53 +28,68 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject[] hearts;
 
-    public Animator animator; 
+    [SerializeField] private GameObject blink;
 
+    public Animator animator;
+
+    private void Start()
+    {
+        blink.SetActive(false);
+    }
+
+    [Obsolete]
     private void Update()
     {
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
+
         // --------Animation-related-------- 
-        if (horizontal != 0f) { 
-            animator.SetBool("AnimBool_isWalking", true); 
-        } 
+        if (horizontal != 0f)
+        {
+            animator.SetBool("AnimBool_isWalking", true);
+        }
         else
         {
             animator.SetBool("AnimBool_isWalking", false);
         }
-        if (IsGrounded() == true){
+        if (IsGrounded() == true)
+        {
             animator.SetBool("AnimBool_isGrounded", true);
         }
-        else{
+        else
+        {
             animator.SetBool("AnimBool_isGrounded", false);
         }
-        animator.SetFloat("AnimFloat_YVelocity", rb.linearVelocityY); 
+        animator.SetFloat("AnimFloat_YVelocity", rb.linearVelocityY);
         // --------End--------
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower);
-        }
 
+        }
         if (Input.GetButtonUp("Jump") && rb.linearVelocityY > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.05f);
         }
 
-        /*if (Time.time > nextAttackTime)
-        { 
+        if (Time.time > nextAttackTime)
+        {
             if (Input.GetMouseButtonDown(0))
             {
-                if (IsGrounded() == true){
-                animator.SetTrigger("AnimTrig_AttackGrounded"); 
+                if (IsGrounded() == true)
+                {
+                    animator.SetTrigger("AnimTrig_AttackGrounded");
                 }
-                else{
-                    animator.SetTrigger("AnimTrig_AttackAirborn"); 
+                else
+                {
+                    animator.SetTrigger("AnimTrig_AttackAirborn");
                 }
                 Attack();
                 nextAttackTime = Time.time + 1 / attackRate;
             }
-        }*/
+        }
 
         Flip();
     }
@@ -122,12 +137,14 @@ public class PlayerMovement : MonoBehaviour
         if (collision.collider.CompareTag("Enemy") && !isPlayerInvulnerable)
         {
             // Example damage value; adjust as needed
+            Invoke("EnableBlink", 0f);
+            Invoke("DisableBlink", 0.1f);
             TakeDamage(1);
         }
 
         if (collision.collider.CompareTag("Spikes"))
         {
-            for(var i = 1; i >= 0; i--)
+            for (var i = 1; i >= 0; i--)
             {
                 Destroy(hearts[i].gameObject);
             }
@@ -162,5 +179,15 @@ public class PlayerMovement : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player died");
+    }
+
+    private void EnableBlink()
+    {
+        blink.SetActive(true);
+    }
+
+    private void DisableBlink()
+    {
+        blink.SetActive(false);
     }
 }

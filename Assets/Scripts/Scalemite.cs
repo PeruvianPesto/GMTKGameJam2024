@@ -3,60 +3,40 @@ using UnityEngine;
 
 public class Scalemite : MonoBehaviour
 {
-    public int speed = 3;
-    public Rigidbody2D rb;
-    private bool isFacingRight = true;
-    private Transform groundPoint;
+    public float moveSpeed = 2f;
+    public LayerMask groundLayer;
+    public Transform groundCheck;
+    public float groundCheckDistance = 0.1f;
+    public Transform edgeCheck;
 
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-    public float circleRadius;
+    [SerializeField] private Rigidbody2D rb;
+    private bool movingRight = true;
 
-    void Start()
+    private void Update()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-    }
+        Move();
 
-    void Update()
-    {
-        rb.linearVelocity = transform.right * speed;
+        // Check for edges or downward slopes
+        bool isGroundAhead = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+        bool isEdgeAhead = !Physics2D.Raycast(edgeCheck.position, Vector2.down, groundCheckDistance, groundLayer);
 
-        if(!IsGrounded())
+        if (!isGroundAhead || isEdgeAhead)
         {
-            Flip();
+            TurnAround();
         }
     }
 
-    public void Flip()
+    private void Move()
     {
-        if (isFacingRight || !isFacingRight)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
-            speed = speed * (-1);
-        }
+        rb.linearVelocity = new Vector2(movingRight ? moveSpeed : -moveSpeed, rb.linearVelocityY);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    void TurnAround()
     {
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            Flip();
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (groundCheck == null) return;
-
-        Gizmos.DrawWireSphere(groundCheck.position, circleRadius);
-    }
-
-    private bool IsGrounded()
-    {
-        return Physics2D.OverlapCircle(groundCheck.position, circleRadius, groundLayer);
+        movingRight = !movingRight;
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
     }
 }
 
