@@ -109,6 +109,11 @@ public class PlayerMovement : MonoBehaviour
             // Example damage value; adjust as needed
             TakeDamage(1);
         }
+
+        if (collision.collider.CompareTag("Spikes"))
+        {
+            Die();
+        }
     }
 
     private void TakeDamage(int damage)

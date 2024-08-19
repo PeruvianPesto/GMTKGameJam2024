@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Player Attack
   - Enemy
+  - Spikes
   layers:
   - Default
   - TransparentFX
