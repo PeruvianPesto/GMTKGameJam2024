@@ -6,6 +6,11 @@ public class Scalemite : MonoBehaviour
     public int speed = 3;
     public Rigidbody2D rb;
     private bool isFacingRight = true;
+    private Transform groundPoint;
+
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    public float circleRadius;
 
     void Start()
     {
@@ -15,9 +20,14 @@ public class Scalemite : MonoBehaviour
     void Update()
     {
         rb.linearVelocity = transform.right * speed;
+
+        if(!IsGrounded())
+        {
+            Flip();
+        }
     }
 
-    private void Flip()
+    public void Flip()
     {
         if (isFacingRight || !isFacingRight)
         {
@@ -25,6 +35,7 @@ public class Scalemite : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            speed = speed * (-1);
         }
     }
 
@@ -33,17 +44,19 @@ public class Scalemite : MonoBehaviour
         if (other.gameObject.CompareTag("Wall"))
         {
             Flip();
-            speed = speed * (-1);
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnDrawGizmos()
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            Flip();
-            speed = speed * (-1);
-        }
+        if (groundCheck == null) return;
+
+        Gizmos.DrawWireSphere(groundCheck.position, circleRadius);
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, circleRadius, groundLayer);
     }
 }
 
