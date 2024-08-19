@@ -68,4 +68,9 @@ public class PlayerManager : MonoBehaviour
             cameraFollow.target = currentPlayer.transform;
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

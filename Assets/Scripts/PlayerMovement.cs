@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.05f);
         }
 
-        if (Time.time > nextAttackTime)
+        /*if (Time.time > nextAttackTime)
         { 
             if (Input.GetMouseButtonDown(0))
             {
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
                 Attack();
                 nextAttackTime = Time.time + 1 / attackRate;
             }
-        }
+        }*/
 
         Flip();
     }
