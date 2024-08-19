@@ -27,6 +27,8 @@ public class BigCharacterMovement : MonoBehaviour
     [SerializeField] private float invulnerabilityTime = 1f;
     private bool isPlayerInvulnerable = false;
 
+    public GameObject[] hearts;
+
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -101,6 +103,15 @@ public class BigCharacterMovement : MonoBehaviour
             // Example damage value; adjust as needed
             TakeDamage(1);
         }
+
+        if (collision.collider.CompareTag("Spikes"))
+        {
+            for (var i = 1; i >= 0; i--)
+            {
+                Destroy(hearts[i].gameObject);
+            }
+            Die();
+        }
     }
 
     private void TakeDamage(int damage)
@@ -108,6 +119,7 @@ public class BigCharacterMovement : MonoBehaviour
         if (isPlayerInvulnerable) return;
 
         playerHealth -= damage;
+        Destroy(hearts[playerHealth].gameObject);
 
         if (playerHealth <= 0)
         {

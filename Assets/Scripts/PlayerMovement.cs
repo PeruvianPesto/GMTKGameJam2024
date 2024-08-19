@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float invulnerabilityTime = 1f;
     private bool isPlayerInvulnerable = false;
 
+    public GameObject[] hearts;
+
     public Animator animator; 
 
     private void Update()
@@ -125,6 +127,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.collider.CompareTag("Spikes"))
         {
+            for(var i = 1; i >= 0; i--)
+            {
+                Destroy(hearts[i].gameObject);
+            }
             Die();
         }
     }
@@ -134,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
         if (isPlayerInvulnerable) return;
 
         playerHealth -= damage;
+        Destroy(hearts[playerHealth].gameObject);
 
         if (playerHealth <= 0)
         {

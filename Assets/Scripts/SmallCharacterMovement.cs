@@ -26,6 +26,8 @@ public class SmallCharacterMovement : MonoBehaviour
     [SerializeField] private float invulnerabilityTime = 1f;
     private bool isPlayerInvulnerable = false;
 
+    public GameObject[] hearts;
+
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -99,6 +101,16 @@ public class SmallCharacterMovement : MonoBehaviour
         {
             // Example damage value; adjust as needed
             TakeDamage(1);
+            Destroy(hearts[playerHealth].gameObject);
+        }
+
+        if (collision.collider.CompareTag("Spikes"))
+        {
+            for (var i = 1; i >= 0; i--)
+            {
+                Destroy(hearts[i].gameObject);
+            }
+            Die();
         }
     }
 
