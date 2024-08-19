@@ -1,18 +1,17 @@
+using System;
 using UnityEngine;
 
 public class Scalemite : MonoBehaviour
 {
-    public int speed = 20;
+    public int speed = 3;
     public Rigidbody2D rb;
     private bool isFacingRight = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         rb.linearVelocity = transform.right * speed;
@@ -20,7 +19,7 @@ public class Scalemite : MonoBehaviour
 
     private void Flip()
     {
-        if (isFacingRight|| !isFacingRight)
+        if (isFacingRight || !isFacingRight)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
@@ -47,3 +46,5 @@ public class Scalemite : MonoBehaviour
         }
     }
 }
+
+
