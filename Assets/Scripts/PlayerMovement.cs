@@ -60,15 +60,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Time.time > nextAttackTime)
-        {
-            if (IsGrounded() == true){
-                animator.SetTrigger("AnimTrig_AttackGrounded"); 
-            }
-            else{
-                animator.SetTrigger("AnimTrig_AttackAirborn"); 
-            }
+        { 
             if (Input.GetMouseButtonDown(0))
             {
+                if (IsGrounded() == true){
+                animator.SetTrigger("AnimTrig_AttackGrounded"); 
+                }
+                else{
+                    animator.SetTrigger("AnimTrig_AttackAirborn"); 
+                }
                 Attack();
                 nextAttackTime = Time.time + 1 / attackRate;
             }

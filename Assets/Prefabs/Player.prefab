@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpPower: 12
+  jumpPower: 15
   circleRadius: 0.2
   rb: {fileID: 6495486740416061540}
   groundCheck: {fileID: 6360405771998546789}
