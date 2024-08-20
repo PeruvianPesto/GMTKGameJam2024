@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private float nextAttackTime = 0f;
     private AudioSource audioSource;
 
+    private Vector3 lastCheckpointPosition;
 
     [SerializeField] private float playerHealth = 2f;
     [SerializeField] private float currentHealth;
@@ -135,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, circleRadius, groundLayer);
     }
 
+
     private void Attack()
     {
         attackEffect.SetActive(true);
@@ -220,6 +222,20 @@ public class PlayerMovement : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player died");
+        Respawn();
+    }
+
+    public void SetCheckpoint(Vector3 checkpointPosition)
+    {
+        lastCheckpointPosition = checkpointPosition;
+    }
+
+    private void Respawn()
+    {
+        transform.position = lastCheckpointPosition;
+        currentHealth = playerHealth; // Reset health if desired
+        currentHealthBar.fillAmount = currentHealth / 3; // Update health UI
+        StartCoroutine(PlayerInvulnerabilityCoroutine()); // Provide invulnerability after respawn
     }
 
     private void EnableBlink()
