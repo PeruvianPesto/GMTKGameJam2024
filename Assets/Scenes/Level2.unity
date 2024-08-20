@@ -24035,7 +24035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2792729958401728566, guid: 855396ff079667a4e9ff204080f678fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.033
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 4072997250562093198, guid: 855396ff079667a4e9ff204080f678fc, type: 3}
       propertyPath: coinManager
