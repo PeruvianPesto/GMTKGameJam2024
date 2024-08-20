@@ -12,6 +12,9 @@ public class PlayerManager : MonoBehaviour
     public bool isPaused = false;
 
     private GameObject currentPlayer;
+    private Coroutine sizeChangeCoroutine;
+
+    [SerializeField] private float powerUpCounter = 20f;
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused)
             {
@@ -52,10 +55,16 @@ public class PlayerManager : MonoBehaviour
         canvas.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-    }    
+    }
 
     public void ChangeSize(GameObject newPlayer, float verticalOffset)
     {
+        // Stop any ongoing size change coroutine
+        if (sizeChangeCoroutine != null)
+        {
+            StopCoroutine(sizeChangeCoroutine);
+        }
+
         // Switch to the new player object
         newPlayer.transform.position = currentPlayer.transform.position + new Vector3(0, verticalOffset, 0);
         currentPlayer.SetActive(false);
@@ -67,6 +76,15 @@ public class PlayerManager : MonoBehaviour
         {
             cameraFollow.target = currentPlayer.transform;
         }
+
+        // Start the coroutine to revert size after 20 seconds
+        sizeChangeCoroutine = StartCoroutine(RevertSizeAfterDelay(powerUpCounter));
+    }
+
+    private IEnumerator RevertSizeAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ChangeSize(normalPlayer, 0f);
     }
 
     public void QuitGame()
