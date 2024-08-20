@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource audioSource;
 
 
-    [SerializeField] private float playerHealth = 3f;
+    [SerializeField] private float playerHealth = 2f;
     [SerializeField] private float currentHealth;
     [SerializeField] private float invulnerabilityTime = 3f;
     private bool isPlayerInvulnerable = false;
