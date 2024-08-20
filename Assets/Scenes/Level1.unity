@@ -917,6 +917,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 278650438901613210, guid: 5b0988720ca50bf4fb3f201655680484, type: 3}
+      propertyPath: coinManager
+      value: 
+      objectReference: {fileID: 1151951023}
+    - target: {fileID: 278650438901613210, guid: 5b0988720ca50bf4fb3f201655680484, type: 3}
       propertyPath: totalHealthBar
       value: 
       objectReference: {fileID: 1453171413}
@@ -927,10 +931,6 @@ PrefabInstance:
     - target: {fileID: 713766677468998836, guid: 5b0988720ca50bf4fb3f201655680484, type: 3}
       propertyPath: m_Name
       value: BigPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 713766677468998836, guid: 5b0988720ca50bf4fb3f201655680484, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4295280187395121482, guid: 5b0988720ca50bf4fb3f201655680484, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5431,6 +5431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 7774298116357065154, guid: ddf8cc63b20d96d49afbac842d02b471, type: 3}
+      propertyPath: coinManager
+      value: 
+      objectReference: {fileID: 1151951023}
     - target: {fileID: 7774298116357065154, guid: ddf8cc63b20d96d49afbac842d02b471, type: 3}
       propertyPath: totalHealthBar
       value: 

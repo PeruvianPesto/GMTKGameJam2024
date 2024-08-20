@@ -8,5 +8,13 @@ public class Checkpoint : MonoBehaviour
         {
             other.GetComponent<PlayerMovement>().SetCheckpoint(transform.position);
         }
+        if (other.CompareTag("BigPlayer"))
+        {
+            other.GetComponent<BigCharacterMovement>().SetCheckpoint(transform.position);
+        }
+        if (other.CompareTag("SmallPlayer"))
+        {
+            other.GetComponent<SmallCharacterMovement>().SetCheckpoint(transform.position); 
+        }
     }
 }

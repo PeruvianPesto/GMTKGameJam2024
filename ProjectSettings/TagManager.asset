@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - Spikes
   - Gold
+  - BigPlayer
+  - SmallPlayer
   layers:
   - Default
   - TransparentFX

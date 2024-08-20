@@ -10,7 +10,7 @@ public class ZoneLoader : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     { 
         Debug.Log("Zone Loader hit!"); 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("BigPlayer") || other.CompareTag("SmallPlayer"))
         { 
             SceneManager.LoadScene(sceneToLoad);
         }
