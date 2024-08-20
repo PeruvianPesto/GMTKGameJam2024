@@ -89,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 Attack();
                 nextAttackTime = Time.time + 1 / attackRate;
+                hpAnimator.SetTrigger("TakeDamage");
             }
         }
 
@@ -160,8 +161,7 @@ public class PlayerMovement : MonoBehaviour
         if (playerHealth > 0)
         {
             playerHealth -= damage;
-            hpAnimator.SetTrigger("TakeDamage");
-            //Destroy(hearts[playerHealth].gameObject);
+            Destroy(hearts[playerHealth].gameObject);
         }
 
         if (playerHealth <= 0)
