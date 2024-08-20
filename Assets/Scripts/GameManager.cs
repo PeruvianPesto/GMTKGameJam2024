@@ -9,6 +9,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        coinText.text = ": " + coinCount.ToString();
+        //coinText.text = ": " + coinCount.ToString();
     }
 }
