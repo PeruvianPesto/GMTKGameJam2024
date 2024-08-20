@@ -2,12 +2,13 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
 
 public class SmallCharacterMovement : MonoBehaviour
 {
     private float horizontal;
     [SerializeField] private float speed = 10f;
-    [SerializeField] private float jumpPower = 15f;
+    [SerializeField] private float jumpPower = 20f;
     private bool isFacingRight = true;
     [SerializeField] private float circleRadius = 0.1f;
 
@@ -16,29 +17,47 @@ public class SmallCharacterMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private GameObject attackEffect;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private int attackDamage = 0;
-    [SerializeField] private float attackRate = 1f;
+    [SerializeField] private float attackRate = 2f;
     private float nextAttackTime = 0f;
 
-    [SerializeField] private int playerHealth = 1;
-    [SerializeField] private float invulnerabilityTime = 1f;
+
+    [SerializeField] private float playerHealth = 1f;
+    [SerializeField] private float currentHealth;
+    [SerializeField] private float invulnerabilityTime = 3f;
     private bool isPlayerInvulnerable = false;
 
-    public GameObject[] hearts;
+    [SerializeField] private Image totalHealthBar;
+    [SerializeField] private Image currentHealthBar;
+
+    [SerializeField] private GameObject blink;
+
+    public GameManager coinManager;
+
+    private void Start()
+    {
+        currentHealth = playerHealth;
+        totalHealthBar.fillAmount = currentHealth / 3;
+
+        blink.SetActive(false);
+    }
 
     private void Update()
     {
+
+        currentHealthBar.fillAmount = currentHealth / 3;
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        // Jump
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpPower);
-        }
 
+        }
         if (Input.GetButtonUp("Jump") && rb.linearVelocityY > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.05f);
@@ -55,7 +74,6 @@ public class SmallCharacterMovement : MonoBehaviour
 
         Flip();
     }
-
 
     private void FixedUpdate()
     {
@@ -80,12 +98,22 @@ public class SmallCharacterMovement : MonoBehaviour
 
     private void Attack()
     {
+        attackEffect.SetActive(true);
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
+
+        StartCoroutine(DisableAttackEffect());
+    }
+
+    private IEnumerator DisableAttackEffect()
+    {
+        yield return new WaitForSeconds(0.15f);
+        attackEffect.SetActive(false);
     }
 
     private void OnDrawGizmos()
@@ -100,17 +128,24 @@ public class SmallCharacterMovement : MonoBehaviour
         if (collision.collider.CompareTag("Enemy") && !isPlayerInvulnerable)
         {
             // Example damage value; adjust as needed
+            Invoke("EnableBlink", 0f);
+            Invoke("DisableBlink", 0.2f);
             TakeDamage(1);
-            Destroy(hearts[playerHealth].gameObject);
         }
 
         if (collision.collider.CompareTag("Spikes"))
         {
-            for (var i = 1; i >= 0; i--)
-            {
-                Destroy(hearts[i].gameObject);
-            }
-            Die();
+            currentHealth = 0;
+            TakeDamage(0);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Gold"))
+        {
+            Destroy(collision.gameObject);
+            coinManager.coinCount++;
         }
     }
 
@@ -118,14 +153,19 @@ public class SmallCharacterMovement : MonoBehaviour
     {
         if (isPlayerInvulnerable) return;
 
-        playerHealth -= damage;
+        if (playerHealth > 0)
+        {
+            currentHealth -= damage;
+        }
 
-        if (playerHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
         else
         {
+            Invoke("EnableBlink", 0f);
+            Invoke("DisableBlink", 0.2f);
             StartCoroutine(PlayerInvulnerabilityCoroutine());
         }
     }
@@ -140,6 +180,15 @@ public class SmallCharacterMovement : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player died");
-        this.enabled = false;
+    }
+
+    private void EnableBlink()
+    {
+        blink.SetActive(true);
+    }
+
+    private void DisableBlink()
+    {
+        blink.SetActive(false);
     }
 }

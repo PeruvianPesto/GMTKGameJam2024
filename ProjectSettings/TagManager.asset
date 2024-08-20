@@ -9,6 +9,7 @@ TagManager:
   - Player Attack
   - Enemy
   - Spikes
+  - Gold
   layers:
   - Default
   - TransparentFX
