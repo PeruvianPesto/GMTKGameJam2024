@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -116,6 +117,11 @@ public class PlayerManager : MonoBehaviour
     public void OrbCollected(GameObject orb)
     {
         collectedOrbs.Add(orb);
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadSceneAsync("Main Menu");
     }
 
     public void QuitGame()
