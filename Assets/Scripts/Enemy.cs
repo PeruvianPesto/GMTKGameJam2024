@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Invoke("EnableBlink", 0f);
-        Invoke("DisableBlink", 0.1f);
+        Invoke("DisableBlink", 0.2f);
         currentHealth -= damage;
 
         if (currentHealth <= 0)
