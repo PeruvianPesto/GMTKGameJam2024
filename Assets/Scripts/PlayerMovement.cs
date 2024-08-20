@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Image totalHealthBar;
     [SerializeField] private Image currentHealthBar;
 
-
     [SerializeField] private GameObject blink;
 
     public Animator animator;

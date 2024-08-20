@@ -19,11 +19,13 @@ public class BigCharacterMovement : MonoBehaviour
 
     [SerializeField] private Transform attackPoint;
     [SerializeField] private GameObject attackEffect;
-    [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] private float attackRange = 1f;
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private int attackDamage = 2;
-    [SerializeField] private float attackRate = 3f;
-    private float nextAttackTime = 2.5f;
+    [SerializeField] private float attackRate = 2f;
+    [SerializeField] private AudioClip attackClip;
+    private float nextAttackTime = 0f;
+    private AudioSource audioSource;
 
 
     [SerializeField] private float playerHealth = 3f;
@@ -34,28 +36,30 @@ public class BigCharacterMovement : MonoBehaviour
     [SerializeField] private Image totalHealthBar;
     [SerializeField] private Image currentHealthBar;
 
+    [SerializeField] private GameObject blink;
+
     public Animator animator;
-    public GameObject fireBall;
+
+    private void Start()
+    {
+        currentHealth = playerHealth;
+        totalHealthBar.fillAmount = currentHealth / 3;
+
+        blink.SetActive(false);
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        }
+    }
 
     private void Update()
     {
-        //Animation things
-        if (horizontal != 0f)
-        {
-            animator.SetBool("AnimBool_IsWalking", true);
-        }
-        else
-        {
-            animator.SetBool("AnimBool_IsWalking", false);
-        }
-        if (IsGrounded() == true)
-        {
-            animator.SetBool("AnimBool_IsGrounded", true);
-        }
-        else
-        {
-            animator.SetBool("AnimBool_IsGrounded", false);
-        }
+
+        currentHealthBar.fillAmount = currentHealth / 3;
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -88,7 +92,6 @@ public class BigCharacterMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump") && rb.linearVelocityY > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.05f);
-            animator.SetTrigger("JumpAnimation");
         }
 
         if (Time.time > nextAttackTime)
@@ -104,7 +107,7 @@ public class BigCharacterMovement : MonoBehaviour
                     animator.SetTrigger("AnimTrig_AttackAirborn");
                 }
                 Attack();
-                nextAttackTime = Time.time + 3 / attackRate;
+                nextAttackTime = Time.time + 1 / attackRate;
             }
         }
 
@@ -134,7 +137,9 @@ public class BigCharacterMovement : MonoBehaviour
 
     private void Attack()
     {
-        animator.SetTrigger("AttackAnimation");
+        attackEffect.SetActive(true);
+        AudioSource.PlayClipAtPoint(attackClip, transform.position, 0.5f);
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
@@ -174,16 +179,6 @@ public class BigCharacterMovement : MonoBehaviour
             TakeDamage(0);
         }
     }
-
-    public void FireBall()
-    {
-        fireBall.SetActive(true);
-    }
-
-    public void FireBallOff()
-    {
-        fireBall.SetActive(false);
-    }    
 
     private void TakeDamage(int damage)
     {
