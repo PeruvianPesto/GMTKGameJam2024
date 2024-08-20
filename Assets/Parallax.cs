@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Parallax : MonoBehaviour
 {
+    //Dicks
     public GameObject cam;  // Reference to the player object
     private string sceneName;
     public float oceanSpeed = 0.05f;
