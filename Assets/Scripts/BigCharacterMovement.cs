@@ -21,7 +21,7 @@ public class BigCharacterMovement : MonoBehaviour
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private int attackDamage = 2;
     [SerializeField] private float attackRate = 3f;
-    private float nextAttackTime = 0f;
+    private float nextAttackTime = 2.5f;
 
     [SerializeField] private int playerHealth = 3;
     [SerializeField] private float invulnerabilityTime = 1f;
@@ -29,8 +29,29 @@ public class BigCharacterMovement : MonoBehaviour
 
     public GameObject[] hearts;
 
+    public Animator animator;
+    public GameObject fireBall;
+
     private void Update()
     {
+        //Animation things
+        if (horizontal != 0f)
+        {
+            animator.SetBool("AnimBool_IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("AnimBool_IsWalking", false);
+        }
+        if (IsGrounded() == true)
+        {
+            animator.SetBool("AnimBool_IsGrounded", true);
+        }
+        else
+        {
+            animator.SetBool("AnimBool_IsGrounded", false);
+        }
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
         // Jump
@@ -43,6 +64,7 @@ public class BigCharacterMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump") && rb.linearVelocityY > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.05f);
+            animator.SetTrigger("JumpAnimation");
         }
 
         if (Time.time > nextAttackTime)
@@ -50,7 +72,7 @@ public class BigCharacterMovement : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Attack();
-                nextAttackTime = Time.time + 1 / attackRate;
+                nextAttackTime = Time.time + 3 / attackRate;
             }
         }
 
@@ -81,6 +103,7 @@ public class BigCharacterMovement : MonoBehaviour
 
     private void Attack()
     {
+        animator.SetTrigger("AttackAnimation");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
@@ -113,6 +136,16 @@ public class BigCharacterMovement : MonoBehaviour
             Die();
         }
     }
+
+    public void FireBall()
+    {
+        fireBall.SetActive(true);
+    }
+
+    public void FireBallOff()
+    {
+        fireBall.SetActive(false);
+    }    
 
     private void TakeDamage(int damage)
     {
