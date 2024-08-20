@@ -12,6 +12,7 @@ public class Scalemite : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private bool movingRight = true;
 
+
     private void Update()
     {
         Move();

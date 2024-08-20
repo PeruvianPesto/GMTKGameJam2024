@@ -16,11 +16,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private GameObject attackEffect;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackRate = 2f;
+    [SerializeField] private AudioClip attackClip;
     private float nextAttackTime = 0f;
+    private AudioSource audioSource;
+
 
     [SerializeField] private int playerHealth = 3;
     [SerializeField] private float invulnerabilityTime = 1f;
@@ -36,6 +40,15 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         blink.SetActive(false);
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        }
+
+   
     }
 
     [Obsolete]
@@ -118,12 +131,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attack()
     {
+        attackEffect.SetActive(true);
+        AudioSource.PlayClipAtPoint(attackClip, transform.position, 0.5f);
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
+
+        StartCoroutine(DisableAttackEffect());
+    }
+
+    private IEnumerator DisableAttackEffect()
+    {
+        yield return new WaitForSeconds(0.1f); 
+        attackEffect.SetActive(false);
     }
 
     private void OnDrawGizmos()
@@ -139,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Example damage value; adjust as needed
             Invoke("EnableBlink", 0f);
-            Invoke("DisableBlink", 0.1f);
+            Invoke("DisableBlink", 0.2f);
             TakeDamage(1);
         }
 
