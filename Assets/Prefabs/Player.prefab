@@ -321,7 +321,7 @@ MonoBehaviour:
     m_Bits: 64
   attackPoint: {fileID: 8631820576421385451}
   attackEffect: {fileID: 8876747243461868272}
-  attackRange: 0.4
+  attackRange: 0.44
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -334,6 +334,7 @@ MonoBehaviour:
   totalHealthBar: {fileID: 0}
   currentHealthBar: {fileID: 0}
   blink: {fileID: 6079530265096772740}
+  coinManager: {fileID: 0}
   animator: {fileID: 2459084435596541249}
 --- !u!50 &6495486740416061540
 Rigidbody2D:

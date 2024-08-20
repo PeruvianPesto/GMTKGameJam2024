@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private GameObject blink;
 
+    public GameManager coinManager;
+
     public Animator animator;
     private void Start()
     {
@@ -161,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Enemy") && !isPlayerInvulnerable)
         {
@@ -175,6 +177,15 @@ public class PlayerMovement : MonoBehaviour
         {
             currentHealth = 0;
             TakeDamage(0);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Gold"))
+        {
+            Destroy(collision.gameObject);
+            coinManager.coinCount++;
         }
     }
 

@@ -34,7 +34,7 @@ public class SmallCharacterMovement : MonoBehaviour
     [SerializeField] private Image currentHealthBar;
 
     [SerializeField] private GameObject blink;
-
+    
     private void Start()
     {
         currentHealth = playerHealth;
