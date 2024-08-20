@@ -1,49 +1,49 @@
 fileFormatVersion: 2
-guid: 4f618fe358958d542b2d1546ed9350b5
+guid: d9390a41d42bd5b49911bdd18754067f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 636117619233319545
-    second: bigknight_0
+      213: 203199443221960209
+    second: bigknight 1_0
   - first:
-      213: -1208150266640505631
-    second: bigknight_1
+      213: -8379035370140312264
+    second: bigknight 1_1
   - first:
-      213: 5973866659561262825
-    second: bigknight_2
+      213: 4483242341951825355
+    second: bigknight 1_2
   - first:
-      213: 6148741541628933116
-    second: bigknight_3
+      213: 1126288300611574991
+    second: bigknight 1_3
   - first:
-      213: 300918283688592354
-    second: bigknight_4
+      213: -4218508531287874045
+    second: bigknight 1_4
   - first:
-      213: 7734072871083336781
-    second: bigknight_5
+      213: 112723966112277651
+    second: bigknight 1_5
   - first:
-      213: 5097454063624440135
-    second: bigknight_6
+      213: -3461129582507706783
+    second: bigknight 1_6
   - first:
-      213: -6442208015651614522
-    second: bigknight_7
+      213: -7071127500162969935
+    second: bigknight 1_7
   - first:
-      213: 5412858709909498610
-    second: bigknight_8
+      213: 883448936980506381
+    second: bigknight 1_8
   - first:
-      213: 7905834220858016156
-    second: bigknight_9
+      213: -1527777646105827843
+    second: bigknight 1_9
   - first:
-      213: 6070119304697210555
-    second: bigknight_10
+      213: 2743021628435463541
+    second: bigknight 1_10
   - first:
-      213: 5522397344117999642
-    second: bigknight_11
+      213: 8714389516252811416
+    second: bigknight 1_11
   - first:
-      213: -1811716019604207006
-    second: bigknight_12
+      213: 1619630100820864760
+    second: bigknight 1_12
   - first:
-      213: 4767539582700680276
-    second: bigknight_13
+      213: 191175680339957587
+    second: bigknight 1_13
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -111,8 +111,8 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
-    resizeAlgorithm: 0
+    maxTextureSize: 512
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -165,7 +165,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bigknight_0
+      name: finalBigKnight_0
       rect:
         serializedVersion: 2
         x: 0
@@ -173,323 +173,323 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 97ae4c9ba91f3d800800000000000000
-      internalID: 636117619233319545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1e46999cbb9cb3fe0800000000000000
-      internalID: -1208150266640505631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9eec2b2731077e250800000000000000
-      internalID: 5973866659561262825
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cf3fa7ccad7b45550800000000000000
-      internalID: 6148741541628933116
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2e3cdada5931d2400800000000000000
-      internalID: 300918283688592354
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d4468e3ac42f45b60800000000000000
-      internalID: 7734072871083336781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_6
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 749c431a67bcdb640800000000000000
-      internalID: 5097454063624440135
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_7
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6c059e921fda896a0800000000000000
-      internalID: -6442208015651614522
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_8
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2fae88f61565e1b40800000000000000
-      internalID: 5412858709909498610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_9
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c918e53465a27bd60800000000000000
-      internalID: 7905834220858016156
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_10
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bb6e7b4c8556d3450800000000000000
-      internalID: 6070119304697210555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_11
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a18c6b4202f73ac40800000000000000
-      internalID: 5522397344117999642
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_12
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 26a4b9901ed7bd6e0800000000000000
-      internalID: -1811716019604207006
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_13
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 454fc7fadf3b92240800000000000000
-      internalID: 4767539582700680276
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigknight_14
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe46d216578017b4aa6cdb3bd7de1412
-      internalID: -497343591
+      spriteID: 2bb44248ad3b802429997385b45f90c4
+      internalID: 484878161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23456ead136125e4587bccb25326777f
+      internalID: 676130311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17d17a684d419d54583c2ce15b1b6655
+      internalID: -1610960603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05f1301d38588094e802030efac30744
+      internalID: 1355972618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced67d1cb536a88459132ec0ded0f4f2
+      internalID: -1676220037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e06404d59702ae64596b9fa21baf5644
+      internalID: -1958357969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a86492459fd52840adc5b7e3cf632b9
+      internalID: -575437916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 099ec8c85afa5b5499b34fc2db87fe5b
+      internalID: -490277131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d836b1c4575dc774e8489d2b62a60983
+      internalID: -2078720484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b94363c5e79e8b740bb9be9a114d374d
+      internalID: 1902824040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 973b76f03d9ac4a4bb9d9ddf843ad230
+      internalID: -1550711735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a4690372a004524293d6454061e6c7e
+      internalID: 1469938498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2f3b5a59990e7f4888afa7ac4570537
+      internalID: 1027912387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a045f81ad873942819b1e599f1b1c1
+      internalID: 985935956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalBigKnight_14
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48a0a7f40b58bb841a0ffc1219100fcc
+      internalID: -310752896
       vertices: []
       indices: 
       edges: []
@@ -498,7 +498,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a6ad7a101b59e4d488a3d26d7771dee7
+    spriteID: 4c1ae9a47d6b3f54d8a46a54936e648e
     internalID: 0
     vertices: []
     indices: 
@@ -508,21 +508,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bigknight_0: 636117619233319545
-      bigknight_1: -1208150266640505631
-      bigknight_10: 6070119304697210555
-      bigknight_11: 5522397344117999642
-      bigknight_12: -1811716019604207006
-      bigknight_13: 4767539582700680276
-      bigknight_14: -497343591
-      bigknight_2: 5973866659561262825
-      bigknight_3: 6148741541628933116
-      bigknight_4: 300918283688592354
-      bigknight_5: 7734072871083336781
-      bigknight_6: 5097454063624440135
-      bigknight_7: -6442208015651614522
-      bigknight_8: 5412858709909498610
-      bigknight_9: 7905834220858016156
+      finalBigKnight_0: 484878161
+      finalBigKnight_1: 676130311
+      finalBigKnight_10: -1550711735
+      finalBigKnight_11: 1469938498
+      finalBigKnight_12: 1027912387
+      finalBigKnight_13: 985935956
+      finalBigKnight_14: -310752896
+      finalBigKnight_2: -1610960603
+      finalBigKnight_3: 1355972618
+      finalBigKnight_4: -1676220037
+      finalBigKnight_5: -1958357969
+      finalBigKnight_6: -575437916
+      finalBigKnight_7: -490277131
+      finalBigKnight_8: -2078720484
+      finalBigKnight_9: 1902824040
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
