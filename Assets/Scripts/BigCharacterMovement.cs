@@ -24,6 +24,7 @@ public class BigCharacterMovement : MonoBehaviour
     [SerializeField] private int attackDamage = 2;
     [SerializeField] private float attackRate = 2f;
     [SerializeField] private AudioClip attackClip;
+    [SerializeField] private AudioClip coinCollectClip;
     private float nextAttackTime = 0f;
     private AudioSource audioSource;
 
@@ -189,6 +190,7 @@ public class BigCharacterMovement : MonoBehaviour
         {
             Destroy(collision.gameObject);
             coinManager.coinCount++;
+            audioSource.PlayOneShot(coinCollectClip);
         }
     }
 

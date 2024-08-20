@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class SmallCharacterMovement : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class SmallCharacterMovement : MonoBehaviour
     [SerializeField] private int attackDamage = 0;
     [SerializeField] private float attackRate = 2f;
     private float nextAttackTime = 0f;
+    [SerializeField] private AudioClip coinCollectClip;
+    private AudioSource audioSource;
 
 
     [SerializeField] private float playerHealth = 1f;
@@ -44,6 +47,14 @@ public class SmallCharacterMovement : MonoBehaviour
         totalHealthBar.fillAmount = currentHealth / 3;
 
         blink.SetActive(false);
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        }
     }
 
     private void Update()
@@ -147,6 +158,7 @@ public class SmallCharacterMovement : MonoBehaviour
         {
             Destroy(collision.gameObject);
             coinManager.coinCount++;
+            audioSource.PlayOneShot(coinCollectClip);
         }
     }
 
