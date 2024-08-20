@@ -98,6 +98,7 @@ MonoBehaviour:
     m_Bits: 128
   attackDamage: 0
   attackRate: 2
+  coinCollectClip: {fileID: 8300000, guid: 0e89a367f7bb01742ae9878790c31009, type: 3}
   playerHealth: 1
   currentHealth: 0
   invulnerabilityTime: 3
