@@ -19,6 +19,7 @@ public class Parallax : MonoBehaviour
     private float startPosOcean, startPosOcean2;
     private float startPosDune, startPosDune2;
     private float startPosCloud, startPosCloud2;
+    private float initialCamPos; 
     public float camx;
 
     void Start()
@@ -37,7 +38,10 @@ public class Parallax : MonoBehaviour
         startPosDune2 = duneTransform2.position.x;
         startPosCloud = cloudTransform.position.x;
         startPosCloud2 = cloudTransform2.position.x;
+
         length = oceanTransform.GetComponent<SpriteRenderer>().bounds.size.x;
+        initialCamPos = cam.transform.position.x;
+        
     }
 
     void Update()
