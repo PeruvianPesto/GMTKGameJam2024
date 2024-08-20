@@ -8,10 +8,11 @@ public class Scalemite : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckDistance = 0.1f;
     public Transform edgeCheck;
+    public Transform wallCheck; // Transform to check for walls
 
     [SerializeField] private Rigidbody2D rb;
     private bool movingRight = true;
-
+    public float wallCheckDistance = 0.1f; // Distance to check for walls
 
     private void Update()
     {
@@ -21,7 +22,10 @@ public class Scalemite : MonoBehaviour
         bool isGroundAhead = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
         bool isEdgeAhead = !Physics2D.Raycast(edgeCheck.position, Vector2.down, groundCheckDistance, groundLayer);
 
-        if (!isGroundAhead || isEdgeAhead)
+        // Check for walls
+        bool isWallAhead = Physics2D.Raycast(wallCheck.position, movingRight ? Vector2.right : Vector2.left, wallCheckDistance, groundLayer);
+
+        if (!isGroundAhead || isEdgeAhead || isWallAhead)
         {
             TurnAround();
         }
@@ -40,5 +44,3 @@ public class Scalemite : MonoBehaviour
         transform.localScale = scaler;
     }
 }
-
-
