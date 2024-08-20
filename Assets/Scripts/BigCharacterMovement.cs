@@ -42,6 +42,7 @@ public class BigCharacterMovement : MonoBehaviour
 
     public GameManager coinManager;
 
+    private Vector3 lastCheckpointPosition;
     private void Start()
     {
         currentHealth = playerHealth;
@@ -219,11 +220,6 @@ public class BigCharacterMovement : MonoBehaviour
         isPlayerInvulnerable = false;
     }
 
-    private void Die()
-    {
-        Debug.Log("Player died");
-    }
-
     private void EnableBlink()
     {
         blink.SetActive(true);
@@ -232,5 +228,24 @@ public class BigCharacterMovement : MonoBehaviour
     private void DisableBlink()
     {
         blink.SetActive(false);
+    }
+
+    private void Die()
+    {
+        Debug.Log("Player died");
+        Respawn();
+    }
+
+    public void SetCheckpoint(Vector3 checkpointPosition)
+    {
+        lastCheckpointPosition = checkpointPosition;
+    }
+
+    private void Respawn()
+    {
+        transform.position = lastCheckpointPosition;
+        currentHealth = playerHealth; // Reset health if desired
+        currentHealthBar.fillAmount = currentHealth / 3; // Update health UI
+        StartCoroutine(PlayerInvulnerabilityCoroutine()); // Provide invulnerability after respawn
     }
 }
