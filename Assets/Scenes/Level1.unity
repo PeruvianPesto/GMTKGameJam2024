@@ -110441,6 +110441,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4072997250562093198, guid: 855396ff079667a4e9ff204080f678fc, type: 3}
+      propertyPath: totalHealthBar
+      value: 
+      objectReference: {fileID: 1453171413}
+    - target: {fileID: 4072997250562093198, guid: 855396ff079667a4e9ff204080f678fc, type: 3}
+      propertyPath: currentHealthBar
+      value: 
+      objectReference: {fileID: 1759047627}
+    - target: {fileID: 4072997250562093198, guid: 855396ff079667a4e9ff204080f678fc, type: 3}
       propertyPath: 'hearts.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
