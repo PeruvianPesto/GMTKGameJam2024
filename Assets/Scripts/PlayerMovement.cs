@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,34 +27,38 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource audioSource;
 
 
-    [SerializeField] private int playerHealth = 3;
-    [SerializeField] private float invulnerabilityTime = 1f;
+    [SerializeField] private float playerHealth = 3f;
+    [SerializeField] private float currentHealth;
+    [SerializeField] private float invulnerabilityTime = 3f;
     private bool isPlayerInvulnerable = false;
 
-    public GameObject[] hearts;
+    [SerializeField] private Image totalHealthBar;
+    [SerializeField] private Image currentHealthBar;
+
 
     [SerializeField] private GameObject blink;
 
     public Animator animator;
-    public Animator hpAnimator;
-
     private void Start()
     {
+        currentHealth = playerHealth;
+        totalHealthBar.fillAmount = currentHealth / 3;
+
         blink.SetActive(false);
 
         audioSource = gameObject.GetComponent<AudioSource>();
+
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
 
         }
-
-   
     }
 
-    [Obsolete]
     private void Update()
     {
+
+        currentHealthBar.fillAmount = currentHealth / 3;
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -102,7 +107,6 @@ public class PlayerMovement : MonoBehaviour
                 }
                 Attack();
                 nextAttackTime = Time.time + 1 / attackRate;
-                hpAnimator.SetTrigger("TakeDamage");
             }
         }
 
@@ -147,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator DisableAttackEffect()
     {
-        yield return new WaitForSeconds(0.1f); 
+        yield return new WaitForSeconds(0.15f); 
         attackEffect.SetActive(false);
     }
 
@@ -170,11 +174,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.collider.CompareTag("Spikes"))
         {
-            for (var i = 1; i >= 0; i--)
-            {
-                Destroy(hearts[i].gameObject);
-            }
-            Die();
+            currentHealth = 0;
+            TakeDamage(0);
         }
     }
 
@@ -184,16 +185,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (playerHealth > 0)
         {
-            playerHealth -= damage;
-            Destroy(hearts[playerHealth].gameObject);
+            currentHealth -= damage;
         }
 
-        if (playerHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
         else
         {
+            Invoke("EnableBlink", 0f);
+            Invoke("DisableBlink", 0.2f);
             StartCoroutine(PlayerInvulnerabilityCoroutine());
         }
     }
