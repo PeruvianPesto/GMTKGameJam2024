@@ -33,7 +33,7 @@ public class Scalemite : MonoBehaviour
 
     private void Move()
     {
-        rb.linearVelocity = new Vector2(movingRight ? moveSpeed : -moveSpeed, rb.linearVelocityY);
+        rb.linearVelocity = new Vector2(movingRight ? moveSpeed : -moveSpeed, rb.linearVelocity.y);
     }
 
     void TurnAround()
