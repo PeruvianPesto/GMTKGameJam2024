@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 //Comment to save scene
 //^^
+//^^^
 public class ZoneLoader : MonoBehaviour
 {
     // Name of scene 
