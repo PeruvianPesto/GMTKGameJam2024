@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -15,6 +16,10 @@ public class PlayerManager : MonoBehaviour
     private Coroutine sizeChangeCoroutine;
 
     [SerializeField] private float powerUpCounter = 20f;
+
+    private Vector3 lastCheckpointPosition;
+
+    private List<GameObject> collectedOrbs = new List<GameObject>(); // List to track collected orbs
 
     private void Start()
     {
@@ -85,6 +90,32 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         ChangeSize(normalPlayer, 0f);
+    }
+
+    public void SetCheckpoint(Vector3 checkpointPosition)
+    {
+        lastCheckpointPosition = checkpointPosition;
+    }
+
+    public void Respawn()
+    {
+        transform.position = lastCheckpointPosition;
+        currentPlayer = normalPlayer; // Set player to normal size
+        normalPlayer.SetActive(true);
+        smallPlayer.SetActive(false);
+        largePlayer.SetActive(false);
+
+        // Respawn all collected orbs
+        foreach (var orb in collectedOrbs)
+        {
+            orb.SetActive(true);
+        }
+        collectedOrbs.Clear(); // Clear the list after respawning the orbs
+    }
+
+    public void OrbCollected(GameObject orb)
+    {
+        collectedOrbs.Add(orb);
     }
 
     public void QuitGame()
