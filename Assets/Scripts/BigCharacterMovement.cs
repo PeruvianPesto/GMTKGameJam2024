@@ -40,6 +40,8 @@ public class BigCharacterMovement : MonoBehaviour
 
     public Animator animator;
 
+    public GameManager coinManager;
+
     private void Start()
     {
         currentHealth = playerHealth;
@@ -177,6 +179,15 @@ public class BigCharacterMovement : MonoBehaviour
         {
             currentHealth = 0;
             TakeDamage(0);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Gold"))
+        {
+            Destroy(collision.gameObject);
+            coinManager.coinCount++;
         }
     }
 

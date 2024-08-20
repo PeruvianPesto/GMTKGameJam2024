@@ -34,7 +34,9 @@ public class SmallCharacterMovement : MonoBehaviour
     [SerializeField] private Image currentHealthBar;
 
     [SerializeField] private GameObject blink;
-    
+
+    public GameManager coinManager;
+
     private void Start()
     {
         currentHealth = playerHealth;
@@ -135,6 +137,15 @@ public class SmallCharacterMovement : MonoBehaviour
         {
             currentHealth = 0;
             TakeDamage(0);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Gold"))
+        {
+            Destroy(collision.gameObject);
+            coinManager.coinCount++;
         }
     }
 
