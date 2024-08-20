@@ -932,6 +932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 713766677468998836, guid: 5b0988720ca50bf4fb3f201655680484, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4295280187395121482, guid: 5b0988720ca50bf4fb3f201655680484, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.9
