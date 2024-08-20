@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//Zone
 public class ZoneLoader : MonoBehaviour
 {
     // Name of scene 
